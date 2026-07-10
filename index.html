@@ -1,1 +1,655 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ремонт квартир під ключ з гарантією 5 років | RENOVATION PRO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2 family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS ЗМІННІ ТА БАЗОВІ СТИЛІ */
+        :root {
+            --bg-dark: #0f172a;        /* Глибокий темний сланець */
+            --bg-card: rgba(30, 41, 59, 0.7); /* Напівпрозорий блок */
+            --accent: #f59e0b;         /* Будівельний теплий жовто-помаранчевий */
+            --accent-hover: #d97706;   /* Акцентний колір при наведенні */
+            --text-light: #f8fafc;     /* Основний світлий текст */
+            --text-gray: #94a3b8;      /* Допоміжний сірий текст */
+            --border-color: rgba(255, 255, 255, 0.08);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-title span {
+            color: var(--accent);
+        }
+
+        /* ШАПКА САЙТУ */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .phone {
+            font-weight: 600;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .phone:hover {
+            color: var(--accent);
+        }
+
+        /* ГОЛОВНИЙ ЕКРАН (HERO) */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 40%, rgba(15, 23, 42, 0.6) 100%), 
+                        url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover;
+            padding-top: 80px;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-text {
+            max-width: 680px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--accent);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 span {
+            color: var(--accent);
+            background: linear-gradient(to right, #f59e0b, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-group {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--accent);
+            color: #000;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 1.1rem 2.2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.4);
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px -5px rgba(245, 158, 11, 0.6);
+        }
+
+        .cta-note {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cta-note strong {
+            color: var(--text-light);
+        }
+
+        /* ТРИГЕРИ */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 16px;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            border-color: rgba(245, 158, 11, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        /* ПРАВИЙ БЛОК - КВІЗ */
+        .hero-visual {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .visual-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .visual-header h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .visual-header p {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        .badge-sale {
+            background-color: var(--accent);
+            color: #000;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        .quiz-teaser {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .teaser-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .teaser-num {
+            width: 28px;
+            height: 28px;
+            background-color: var(--accent);
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+        }
+
+        /* СЕКЦІЯ ПОРТФОЛІО */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+
+        .portfolio-info {
+            padding: 1.5rem;
+        }
+
+        .portfolio-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* СЕКЦІЯ ЕТАПІВ */
+        .steps-timeline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            position: relative;
+        }
+
+        .step-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 16px;
+            position: relative;
+        }
+
+        .step-num {
+            font-size: 3rem;
+            font-weight: 800;
+            color: rgba(245, 158, 11, 0.15);
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+        }
+
+        .step-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        /* СЕКЦІЯ ФОРМИ / КАЛЬКУЛЯТОРА */
+        .calc-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 3rem;
+            border-radius: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--text-gray);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: #fff;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        /* ФУТЕР */
+        footer {
+            background: #090d16;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* АНІМАЦІЇ */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.85; transform: scale(1.02); }
+        }
+
+        /* АДАПТИВНІСТЬ */
+        @media (max-width: 1024px) {
+            .hero-container, .portfolio-grid, .steps-timeline {
+                grid-template-columns: 1fr;
+            }
+            .hero-text { text-align: center; }
+            .badge { margin: 0 auto 1.5rem auto; }
+            .cta-group { justify-content: center; }
+            h1 { font-size: 2.8rem; }
+            .features-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 640px) {
+            header { flex-direction: column; gap: 1rem; }
+            h1 { font-size: 2.2rem; }
+            .features-grid { grid-template-columns: 1fr; }
+            .calc-box { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">RENOVATION<span>PRO</span></a>
+        <div class="contact-info">
+            <a href="tel:+380971234567" class="phone">+38 (097) 123-45-67</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-text">
+                <div class="badge">✦ Твій ідеальний дім чекає</div>
+                <h1>Ремонт квартир у <span>Києві</span> з гарантією 5 років</h1>
+                <p class="subtitle">Позбавте себе ремонтного стресу: ми беремо на себе все — від 3D-дизайну та закупівлі матеріалів зі знижкою до 20% до фінального клінінгу.</p>
+                
+                <div class="cta-group">
+                    <a href="#calc" class="btn-primary">Отримати безкоштовний кошторис</a>
+                    <div class="cta-note">
+                        <strong>Розрахунок за 1 хвилину</strong>
+                        <span>та дизайн-проєкт у подарунок!</span>
+                    </div>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📝</div>
+                        <h3>Фіксована ціна</h3>
+                        <p>Вартість ремонту фіксується в договорі й не зростає.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>Гарантія 5 років</h3>
+                        <p>Несемо повну матеріальну відповідальність за якість.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⏳</div>
+                        <h3>Точно в термін</h3>
+                        <p>Виплачуємо компенсацію за кожен день затримки.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="visual-header">
+                    <h2>Швидкий тест вартості</h2>
+                    <p>Дайте відповіді на 3 прості питання</p>
+                    <span class="badge-sale">Подарунок: Дизайн-проєкт</span>
+                </div>
+                
+                <div class="quiz-teaser">
+                    <div class="teaser-item">
+                        <div class="teaser-num">1</div>
+                        <div class="teaser-text">Вкажіть площу вашої квартири</div>
+                    </div>
+                    <div class="teaser-item">
+                        <div class="teaser-num">2</div>
+                        <div class="teaser-text">Оберіть тип будинку та стилістику</div>
+                    </div>
+                    <div class="teaser-item">
+                        <div class="teaser-num">3</div>
+                        <div class="teaser-text">Отримайте готовий детальний кошторис</div>
+                    </div>
+                </div>
+
+                <a href="#calc" class="btn-primary" style="width: 100%; text-align: center;">Почати розрахунок ➔</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Наші <span>реалізовані</span> об'єкти</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&q=80&w=600" alt="Сучасний мінімалізм" class="portfolio-img">
+                    <div class="portfolio-info">
+                        <h3>ЖК "Французький квартал"</h3>
+                        <p>Сучасний мінімалізм для молодої сім'ї.</p>
+                        <div class="portfolio-meta">
+                            <span>Площа: 64 м²</span>
+                            <span>Термін: 2.5 міс.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1617806118233-18e1db207f62?auto=format&fit=crop&q=80&w=600" alt="Неокласика" class="portfolio-img">
+                    <div class="portfolio-info">
+                        <h3>ЖК "RiverStone"</h3>
+                        <p>Елегантна неокласика з панорамними вікнами.</p>
+                        <div class="portfolio-meta">
+                            <span>Площа: 88 м²</span>
+                            <span>Термін: 3.5 міс.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=600" alt="Лофт" class="portfolio-img">
+                    <div class="portfolio-info">
+                        <h3>Студія в стилі Лофт</h3>
+                        <p>Затишний індустріальний стиль для IT-спеціаліста.</p>
+                        <div class="portfolio-meta">
+                            <span>Площа: 42 м²</span>
+                            <span>Термін: 1.5 міс.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: rgba(255,255,255,0.01);">
+        <div class="container">
+            <h2 class="section-title">Всього 4 кроки до <span>ремонту мрії</span></h2>
+            <div class="steps-timeline">
+                <div class="step-card">
+                    <div class="step-num">01</div>
+                    <h3>Заявка та замір</h3>
+                    <p>Виїзд інженера на об'єкт, точні заміри та складання детального плану кімнат.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">02</div>
+                    <h3>Договір і кошторис</h3>
+                    <p>Затверджуємо фіксовану ціну, графік робіт та підписуємо офіційний договір.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">03</div>
+                    <h3>Чистові роботи</h3>
+                    <p>Професійна бригада виконує всі роботи: від електрики до укладання плитки.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">04</div>
+                    <h3>Здача та клінінг</h3>
+                    <p>Прибираємо сміття, робимо генеральне прибирання та передаємо вам ключі.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="calc">
+        <div class="container">
+            <h2 class="section-title">Дізнайтесь <span>вартість</span> вашого ремонту</h2>
+            <div class="calc-box">
+                <form id="repairForm" onsubmit="submitForm(event)">
+                    <div class="form-group">
+                        <label for="space">Орієнтовна площа квартири (м²)</label>
+                        <input type="number" id="space" class="form-control" placeholder="Наприклад: 60" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Тип нерухомості</label>
+                        <select id="type" class="form-control">
+                            <option value="новобудова">Новобудова (після будівельників)</option>
+                            <option value="вторинний">Вторинне житло (старий фонд)</option>
+                            <option value="косметичний">Тільки косметичний ремонт</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNum">Номер телефону (для отримання кошторису)</label>
+                        <input type="tel" id="phoneNum" class="form-control" placeholder="+38 (0__) ___-__-__" required>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%; margin-top: 1rem;">Розрахувати вартість та отримати подарунок</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 RENOVATION PRO. Усі права захищено. Ремонт квартир під ключ з гарантією.</p>
+        </div>
+    </footer>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            const space = document.getElementById('space').value;
+            const type = document.getElementById('type').value;
+            const phone = document.getElementById('phoneNum').value;
+            
+            // Проста калькуляція для демонстрації роботи
+            let basePricePerMeter = type === 'новобудова' ? 4500 : type === 'вторинний' ? 6000 : 2500;
+            let estimatedTotal = space * basePricePerMeter;
+
+            alert(`Дякуємо! Менеджер вже зв'язується з вами за номером ${phone}.\n\nОрієнтовна вартість робіт для вашої квартири (${space} м²): від ${estimatedTotal.toLocaleString()} грн.`);
+        }
+    </script>
+</body>
+</html>
